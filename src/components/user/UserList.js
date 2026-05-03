@@ -3,19 +3,23 @@ function UserList({ users, deleteUser, setEditingUser }) {
     <div>
       <h3>User List</h3>
 
-      {users.map((u) => (
-        <div key={u._id}>
-          {u.name} | {u.email} | {u.age}
+      {!users || users.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        users.map((u) => (
+          <div key={u._id}>
+            {u.name} | {u.email} | {u.age}
 
-          <button onClick={() => setEditingUser(u)}>
-            Edit
-          </button>
+            <button onClick={() => setEditingUser(u)}>
+              Edit
+            </button>
 
-          <button onClick={() => deleteUser(u._id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+            <button onClick={() => deleteUser(u._id)}>
+              Delete
+            </button>
+          </div>
+        ))
+      )}
     </div>
   );
 }

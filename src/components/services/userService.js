@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// CRA madhe REACT_APP_ prefix lagtо
 const API = process.env.REACT_APP_API_URL;
 
 export const getUsers = async () => {
