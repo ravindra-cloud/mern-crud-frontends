@@ -7,15 +7,20 @@ function Home() {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
 
-  const fetchUsers = async () => {
-    try {
-      const res = await getUsers();
+const fetchUsers = async () => {
+  try {
+    const res = await getUsers();
+    // array check karto
+    if (Array.isArray(res.data)) {
       setUsers(res.data);
-    } catch (error) {
-      console.error("Error fetching users:", error);
+    } else {
       setUsers([]);
     }
-  };
+  } catch (error) {
+    console.error("Error:", error);
+    setUsers([]);
+  }
+};
 
   useEffect(() => {
     fetchUsers();
